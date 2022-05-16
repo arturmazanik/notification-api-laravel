@@ -13,45 +13,27 @@ Initialization
 
         cd src
 
-1. Build and up project with Docker Compose
+1. add your existing .env or you may the use default .env from laravel
 
-        docker-compose up -d --build
+1. install some vendors
 
-1. Run the docker exec command. To do that, run the command below
+        composer install
 
-        docker-compose exec php /bin/bash
+1. Return to root and build app with command
 
-1. setup meets the requirements for a Symfony application by running the following command
-
-        symfony check:requirements
-   You will see the following output in the terminal:
-
-         [OK]
-         Your system is ready to run Symfony projects
-
-1. create a new Symfony project by running the following command
-
-         symfony new .
-   If successful, you will see the following text in the terminal output
-
-        [OK] Your project is now ready in /var/www/symfony_docker
-
-1. Open `http://localhost:8080/` in your browser, you should see the Symfony's welcome page.
-
-*For closing docker exec cli you must enter `exit` to command line*
+        docker-compose --env-file ./src/.env up -d --build site
 
 Using
 ==============
 
-Using Docker Compose
+Using app
 --------------------
 
-Build and up:
+Exposed ports based from ./src/.env ( i will be using .env_example as a sample)
 
-      docker-compose up -d --build
-Up only:
-
-      docker-compose up -d
-Down:
-
-      docker-compose down
+* app_name - `Laravel` (APP_NAME)
+* nginx - `:801` (NGINX_PORT)
+* pgsql - `:33061` (DB_PORT)
+* php - `:9000`
+* redis - `:63791` (REDIS_PORT)
+* mailhog - `:10251` (MAIL_PORT)
