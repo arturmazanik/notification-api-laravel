@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Controllers\API\Swagger;
 use App\Http\Middleware\ApiHelpers;
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 class ClientController extends Controller
 {
     use ApiHelpers;
+    use Swagger;
 
     public function clients(Request $request): JsonResponse
     {
@@ -33,6 +35,40 @@ class ClientController extends Controller
         return $this->onError(400, $validator->errors());
     }
 
+    /**
+     * @OA\Get(
+     *     path="/addClient",
+     *     operationId="addClient",
+     *     tags={"Add client"},
+     *     summary="Display a listing of the resource",
+     *     security={
+     *       {"api_key": {}},
+     *     },
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Array request params",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="json",
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="add client",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="json",
+     *             )
+     *         )
+     *     ),
+     * )
+     *
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addClient(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), $this->clientValidationRules());

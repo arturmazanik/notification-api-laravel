@@ -1,0 +1,111 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Swagger API documentation",
+        "contact": {
+            "email": "admin@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api",
+            "description": "Laravel Swagger API server"
+        }
+    ],
+    "paths": {
+        "/addClient": {
+            "get": {
+                "tags": [
+                    "Add client"
+                ],
+                "summary": "Display a listing of the resource",
+                "operationId": "addClient",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Array request params",
+                        "required": false,
+                        "schema": {
+                            "type": "json"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add client",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/addNotifications": {
+            "get": {
+                "tags": [
+                    "Add notifications"
+                ],
+                "summary": "Display a listing of the resource",
+                "operationId": "addNotifications",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Array request params",
+                        "required": false,
+                        "schema": {
+                            "type": "json"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add notifications",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "X-APP-ID": {
+                "type": "apiKey",
+                "name": "X-APP-ID",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Examples",
+            "description": "Some example pages"
+        }
+    ]
+}

@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Mail\NotificationSentMail;
+use App\Http\Controllers\API\Swagger;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Mail;
 
 class Notification extends Model
 {
     use HasFactory;
+    use Swagger;
 
     /**
      * The attributes that are mass assignable.

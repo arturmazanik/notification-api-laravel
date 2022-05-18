@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [AuthApiController::class, 'register']);
 Route::post('login', [AuthApiController::class, 'login']);
 Route::get('users', function () {
+    // Bad practice, only for test
+    // ToDo: remove this after tests
     return response()->json([
         'users' => \App\Models\User::all()
     ]);

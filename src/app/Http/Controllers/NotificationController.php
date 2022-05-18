@@ -3,19 +3,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\API\Swagger;
 use App\Http\Middleware\ApiHelpers;
 use App\Jobs\SendMailJob;
-use App\Mail\NotificationSentMail;
 use App\Models\Client;
 use App\Models\Notification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class NotificationController extends Controller
 {
     use ApiHelpers;
+    use Swagger;
+
+    /**
+     * @OA\Get(
+     *     path="/addNotifications",
+     *     operationId="addNotifications",
+     *     tags={"Add notifications"},
+     *     summary="Display a listing of the resource",
+     *     security={
+     *       {"api_key": {}},
+     *     },
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Array request params",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="json",
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="add notifications",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="json",
+     *             )
+     *         )
+     *     ),
+     * )
+     *
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addNotifications(Request $request)
     {
         $validator = Validator::make($request->all(), $this->notificationValidatedRules());
