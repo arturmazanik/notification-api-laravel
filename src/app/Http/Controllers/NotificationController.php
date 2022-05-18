@@ -4,10 +4,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\ApiHelpers;
+use App\Jobs\SendMailJob;
+use App\Mail\NotificationSentMail;
 use App\Models\Client;
 use App\Models\Notification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class NotificationController extends Controller
@@ -34,6 +37,7 @@ class NotificationController extends Controller
                 'content'  =>  $request->get('content'), // use ->get() because "content" declare in ORM
             ]);
 
+            SendMailJob::dispatch()->onQueue($request->channel);
             return $this->onSuccess($notification, 'Notification Created');
         }
         return $this->onError(400, $validator->errors());
