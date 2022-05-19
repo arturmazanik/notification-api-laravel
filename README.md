@@ -31,18 +31,17 @@ Setup application after initialization
 
 1. Run all migrations (in src folder)
 
-
-      php artisan migrate
+        php artisan migrate
 
 1. Put data to DB
 
       
-      php artisan db:seed
+        php artisan db:seed
 
 1. For test api setup headers
 
 
-      X-Requested-With: XMLHttpRequest
+        X-Requested-With: XMLHttpRequest
 
 Using
 ==============
