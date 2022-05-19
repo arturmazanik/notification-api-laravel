@@ -57,7 +57,8 @@ Exposed ports based from ./src/.env ( i will be using .env_example as a sample)
 * pgsql - `:5432` (DB_PORT)
 * php - `:9000`
 * redis - `:63791` (REDIS_PORT)
-* mailhog - `:10251` (MAIL_PORT)
+* mailhog - `:1025` (MAIL_PORT)
+* mailhog interface - `:8025` (MAIL_PORT)
 
 
 Routes (Swagger /api/documentation)
